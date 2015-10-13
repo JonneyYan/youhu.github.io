@@ -5,7 +5,9 @@ var throttle = function(type, name, obj) {
   obj = obj || window;
   var running = false;
   var func = function() {
-    if (running) { return; }
+    if (running) {
+      return;
+    }
     running = true;
     requestAnimationFrame(function() {
       obj.dispatchEvent(new CustomEvent(name));
@@ -16,34 +18,26 @@ var throttle = function(type, name, obj) {
 };
 
 // 将scroll事件重定义为optimizedScroll事件
-throttle("scroll", "optimizedScroll");
+throttle('scroll', 'optimizedScroll');
 function changeLogoAndHeader(rate) {
   if (rate <= 1) {
     const color = 'rgba(249, 82, 70, ' + rate + ')';
     header.style.backgroundColor = color;
-    logo.style.top = (25 - rate * 18) + '%';
-    logo.style.left = (50 - rate * 25) + '%';
-    logo.style.width = (150 - rate * 50) + 'px';
   }else {
     header.style.backgroundColor = 'rgb(249, 82, 70)';
-    logo.style.top = '7%';
-    logo.style.left = '25%';
-    logo.style.width = '50px';
   }
-
 }
 const header = document.querySelector('.menu');
 const logo = document.querySelector('.cover img');
 
-window.addEventListener("optimizedScroll", function(event) {
+window.addEventListener('optimizedScroll', function(event) {
   const maxScorllOffset = 500;
   const rate = window.pageYOffset / maxScorllOffset;
 
   changeLogoAndHeader(rate);
-
 });
 AV.initialize('X5XXTAHfmWUWDobjFeXT6BTO', '4Yvi4vPnLSnC6MqmdXPN2u0w');
-var Post = AV.Object.extend("Post");
+var Post = AV.Object.extend('Post');
 
 const submit = document.querySelector('input[name="submit"]');
 let count = 0;
@@ -57,7 +51,7 @@ submit.onclick = function () {
     name: document.querySelector('input[name="name"]').value,
     email: document.querySelector('input[name="email"]').value,
     phone: document.querySelector('input[name="phone"]').value,
-    demand: document.querySelector('textarea[name="demand"]').value
+    demand: document.querySelector('textarea[name="demand"]').value,
   };
   for (var variable in postContent) {
     if (postContent.hasOwnProperty(variable)) {
